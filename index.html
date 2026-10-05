@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lux — Manhua Library</title>
+<style>
+:root{--bg:#120b0b;--panel:#1b1010;--panel2:#241414;--red:#9d2028;--red2:#c43a42;--brown:#4a2920;--text:#f3e8e2;--muted:#b9a6a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#3a1717 0,#120b0b 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
+header{position:sticky;top:0;z-index:5;background:rgba(18,11,11,.92);backdrop-filter:blur(12px);border-bottom:1px solid #38201e}
+.nav{max-width:1180px;margin:auto;padding:18px 22px;display:flex;align-items:center;gap:28px}
+.logo{font-family:Georgia,serif;font-size:30px;font-weight:800;letter-spacing:2px;color:#fff}
+.logo span{color:#b92b35}.nav a{color:#d9c9c3;text-decoration:none}.nav a:hover{color:#fff}
+.search{margin-left:auto;display:flex;background:#251515;border:1px solid #51302b;border-radius:12px;overflow:hidden}
+.search input{width:230px;background:transparent;border:0;outline:0;padding:11px 13px;color:white}.search button{border:0;background:#8e2028;color:white;padding:0 15px;cursor:pointer}
+main{max-width:1180px;margin:auto;padding:42px 22px 70px}.hero{padding:44px 0 34px}.eyebrow{color:#c83a43;text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:700}.hero h1{font:700 clamp(42px,7vw,78px)/.95 Georgia,serif;margin:12px 0}.hero p{max-width:650px;color:var(--muted);font-size:16px;line-height:1.7}
+.actions{display:flex;gap:12px;margin-top:24px}.btn{padding:12px 18px;border-radius:10px;border:1px solid #5a312b;background:#271615;color:#fff;text-decoration:none}.primary{background:var(--red);border-color:var(--red2)}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:28px 0 16px}.section-title h2{font:600 28px Georgia,serif;margin:0}.section-title a{color:#c43a42;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:linear-gradient(180deg,#281616,#1a1010);border:1px solid #40231f;border-radius:14px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#71332f}.cover{height:245px;background:linear-gradient(145deg,#57201f,#241111);display:flex;align-items:end;padding:16px;position:relative}.cover:after{content:"LUX";font:700 48px Georgia,serif;opacity:.14;position:absolute;right:12px;top:15px}.badge{position:absolute;top:12px;left:12px;background:#8f2028;padding:5px 8px;border-radius:6px;font-size:10px;font-weight:800}.cardbody{padding:14px}.title{font-weight:700}.meta{font-size:12px;color:#9e8d88;margin-top:7px}.reader{margin-top:45px;max-width:820px;margin-left:auto;margin-right:auto}.chapter{background:#0b0707;border:1px solid #34201e;border-radius:14px;overflow:hidden}.chapter img{display:block;width:100%;height:auto}.notice{padding:18px;background:#251313;border:1px solid #5b2928;border-radius:12px;color:#d9c5bf;line-height:1.6}
+footer{border-top:1px solid #33201d;padding:28px 22px;color:#887772;text-align:center}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.nav a{display:none}.search input{width:150px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr 1fr;gap:10px}.cover{height:210px}.nav{gap:12px}.hero{padding-top:25px}}
+</style>
+</head>
+<body>
+<header><nav class="nav">
+<div class="logo">LU<span>X</span></div>
+<a href="#home">Нүүр</a><a href="#library">Номын сан</a><a href="#premium">Premium</a>
+<div class="search"><input id="q" placeholder="Манхва хайх..."><button onclick="search()">⌕</button></div>
+</nav></header>
+
+<main id="home">
+<section class="hero">
+<div class="eyebrow">LUX • MANHUA LIBRARY</div>
+<h1>Түүх бүр<br>өөрийн гэрэлтэй.</h1>
+<p>Орчуулсан манхвагаа нэг дороос уншаарай. Шинэ бүлгүүд, premium бүтээлүүд болон чиний дуртай түүхүүд — Lux дээр.</p>
+<div class="actions"><a class="btn primary" href="#library">Уншиж эхлэх</a><a class="btn" href="#premium">Premium эрх</a></div>
+</section>
+
+<section id="library">
+<div class="section-title"><h2>Онцлох бүтээлүүд</h2><a href="#">Бүгдийг харах →</a></div>
+<div class="grid" id="cards"></div>
+</section>
+
+<section id="premium" style="margin-top:45px">
+<div class="notice"><b>✦ Lux Premium</b><br>Premium бүлгүүдийг уншихын тулд сарын эрх шаардлагатай. Дараагийн хувилбарт бодит төлбөрийн системийг холбоно.</div>
+</section>
+
+<section class="reader">
+<div class="section-title"><h2>Уншигчийн demo</h2></div>
+<div class="chapter">
+<img src="https://placehold.co/820x1160/241414/f3e8e2?text=LUX+CHAPTER+1" alt="Demo chapter">
+</div>
+</section>
+</main>
+<footer>© 2026 Lux — Зөвшөөрөлтэй контентын платформ</footer>
+
+<script>
+const data=[
+ ["Moonlit Contract","Romance • Fantasy","NEW",""],
+ ["The Red Veil","Drama • Historical","PREMIUM",""],
+ ["Eternal Spring","Romance • Mystery","NEW",""],
+ ["After the Rain","Fantasy • Romance","PREMIUM",""]
+];
+const cards=document.getElementById('cards');
+function render(items){
+ cards.innerHTML=items.map(x=>`<article class="card"><div class="cover"><span class="badge">${x[2]}</span></div><div class="cardbody"><div class="title">${x[0]}</div><div class="meta">${x[1]}</div></div></article>`).join('');
+}
+function search(){
+ const q=document.getElementById('q').value.toLowerCase();
+ render(data.filter(x=>x[0].toLowerCase().includes(q)||x[1].toLowerCase().includes(q)));
+}
+render(data);
+</script>
+</body>
+</html>
